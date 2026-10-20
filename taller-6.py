@@ -112,7 +112,7 @@ def contar_palabra_en_comentario():
         print("La palabra '" + palabra + "' no aparece en ese comentario.")
     else:
         print("La palabra '" + palabra + "' aparece", veces, "vez/veces.")
-     def mostrar_resumen():
+ def mostrar_resumen():
     if not hay_comentarios():
         return
     indice = seleccionar_comentario()
