@@ -112,3 +112,61 @@ def contar_palabra_en_comentario():
         print("La palabra '" + palabra + "' no aparece en ese comentario.")
     else:
         print("La palabra '" + palabra + "' aparece", veces, "vez/veces.")
+     def mostrar_resumen():
+    if not hay_comentarios():
+        return
+    indice = seleccionar_comentario()
+    if indice == -1:
+        return
+    palabra = input("Palabra a buscar en el resumen: ").strip().lower()
+    if palabra == "":
+        print("Debe escribir una palabra.")
+        return
+ 
+    resumen = crear_resumen(comentarios[indice], palabra)
+    print("\n--- RESUMEN DEL COMENTARIO", indice + 1, "---")
+    print("Tupla:", resumen)
+    print("Caracteres:", resumen[0])
+    print("Palabras:", resumen[1])
+    print("Apariciones de '" + palabra + "':", resumen[2])
+ 
+ 
+# ---------------------------------------------------------------
+# Menu principal
+# ---------------------------------------------------------------
+def mostrar_menu():
+    print("\n===== ANALIZADOR DE COMENTARIOS =====")
+    print("1. Registrar un comentario")
+    print("2. Mostrar todos los comentarios")
+    print("3. Buscar comentarios que contengan una palabra")
+    print("4. Mostrar la cantidad de palabras de cada comentario")
+    print("5. Contar apariciones de una palabra en un comentario")
+    print("6. Mostrar resumen de un comentario")
+    print("7. Salir")
+ 
+ 
+def main():
+    opcion = ""
+    while opcion != "7":
+        mostrar_menu()
+        opcion = input("Elija una opcion: ").strip()
+ 
+        if opcion == "1":
+            registrar_comentario()
+        elif opcion == "2":
+            mostrar_comentarios()
+        elif opcion == "3":
+            buscar_comentarios()
+        elif opcion == "4":
+            mostrar_cantidad_palabras()
+        elif opcion == "5":
+            contar_palabra_en_comentario()
+        elif opcion == "6":
+            mostrar_resumen()
+        elif opcion == "7":
+            print("Hasta luego.")
+        else:
+            print("Opcion no valida. Elija un numero del 1 al 7.")
+ 
+ 
+main()
