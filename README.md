@@ -2,7 +2,7 @@ Analizador de comentarios
 
 Programa de consola en Python para registrar comentarios de estudiantes sobre sus cursos y analizarlos con operaciones básicas de texto. Desarrollado para el Taller 6 de Lógica de Programación (cadenas, listas y tuplas).
 
-Autor: Joan Nicolas Rey Gomez
+
 
 Descripción
 Los comentarios se guardan en una lista.
