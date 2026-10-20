@@ -47,3 +47,68 @@ def crear_resumen(texto, palabra):
     apariciones = limpiar_texto(texto).split().count(palabra)
     resumen = (cantidad_caracteres, cantidad_palabras, apariciones)
     return resumen
+
+# ---------------------------------------------------------------
+# Opciones del menu
+# ---------------------------------------------------------------
+def registrar_comentario():
+    texto = input("Escriba el comentario: ").strip()
+    if texto != "":
+        comentarios.append(texto)
+        print("Comentario registrado.")
+    else:
+        print("El comentario no puede estar vacio.")
+ 
+ 
+def mostrar_comentarios():
+    if hay_comentarios():
+        print("\n--- COMENTARIOS ---")
+        for i in range(len(comentarios)):
+            print(i + 1, "-", comentarios[i])
+ 
+ 
+def buscar_comentarios():
+    if not hay_comentarios():
+        return
+    palabra = input("Palabra a buscar: ").strip().lower()
+    if palabra == "":
+        print("Debe escribir una palabra.")
+        return
+ 
+    encontrados = 0
+    for i in range(len(comentarios)):
+        if palabra in comentarios[i].lower():
+            print(i + 1, "-", comentarios[i])
+            encontrados += 1
+ 
+    if encontrados == 0:
+        print("No se encontraron coincidencias para '" + palabra + "'.")
+    else:
+        print("Busqueda exitosa:", encontrados, "comentario(s) encontrado(s).")
+ 
+ 
+def mostrar_cantidad_palabras():
+    if not hay_comentarios():
+        return
+    print("\n--- PALABRAS POR COMENTARIO ---")
+    for i in range(len(comentarios)):
+        cantidad = len(comentarios[i].split())
+        print("Comentario", i + 1, ":", cantidad, "palabras")
+ 
+ 
+def contar_palabra_en_comentario():
+    if not hay_comentarios():
+        return
+    indice = seleccionar_comentario()
+    if indice == -1:
+        return
+    palabra = input("Palabra a contar: ").strip().lower()
+    if palabra == "":
+        print("Debe escribir una palabra.")
+        return
+ 
+    veces = limpiar_texto(comentarios[indice]).split().count(palabra)
+    if veces == 0:
+        print("La palabra '" + palabra + "' no aparece en ese comentario.")
+    else:
+        print("La palabra '" + palabra + "' aparece", veces, "vez/veces.")
